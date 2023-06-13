@@ -1,5 +1,6 @@
 import './App.css';
 import ButtonColumn from './ButtonColumn';
+import ButtonRow from './ButtonRow';
 import Display from './Display';
 import {Component} from 'react';
 
@@ -7,31 +8,27 @@ class App extends Component{
   constructor(props){
     super(props);
     this.state = {lastNum: 'nothing'};
+    this.numRows = 6;
   }
 
   handleClick = (num) => this.setState({lastNum: num});
 
   render(){
+    const rows = [];
+    for(let i=1; i <= this.numRows; i++){
+      rows.push(<ButtonRow
+                  key={i}
+                  rowNum={i}
+                  onClick={this.handleClick} />)
+    }
     return (
+      <>
       <div class="container text-center">
-        <div class='row'>
-          <ButtonColumn
-            increment={1}
-            type="danger"
-            length={6}
-            onClick={this.handleClick}
-          />
-          <ButtonColumn
-            increment={2}
-            type='success'
-            length={6}
-            onClick={this.handleClick}
-          />
-        </div>
-        <hr />
+        {rows}
         <Display 
         lastNum={this.state.lastNum}/>
       </div>
+      </>
     );
   }
 }

@@ -1,13 +1,19 @@
 import {Component} from 'react';
 
 class NumButton extends Component{
-  handleClick = () => this.props.onClick(this.props.num);
+  constructor(props){
+    super();
+    this.props = props;
+    this.buttonClass = `btn btn-outline-${this.props.type}`;
+  }
+
+  handleClick = () => {
+    this.props.onClick(this.props.num);
+  }
 
   render(){
-    const {num, type} = this.props;
     const buttonStyle={
-      backgroundColor: 'white',
-      width: '100%',
+      width: '30ch',
       margin: '10px',
       padding: '10px'
     }
@@ -16,8 +22,8 @@ class NumButton extends Component{
         <button
           style={buttonStyle}
           onClick={this.handleClick}
-          class={`btn btn-outline-${type}`}>
-          {num}
+          class={this.buttonClass}>
+          {this.props.num}
         </button>
       </>
     );
