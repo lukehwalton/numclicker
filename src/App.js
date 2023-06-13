@@ -1,5 +1,5 @@
 import './App.css';
-import NumButton from './NumButton';
+import ButtonColumn from './ButtonColumn';
 import {Component} from 'react';
 
 class App extends Component{
@@ -8,15 +8,28 @@ class App extends Component{
     this.state = {lastNum: null};
   }
 
-  handleButtonClick = (num) => console.log(num);
+  handleClick = (num) => this.setState({lastNum: num});
 
   render(){
     return (
       <div class="container text-center">
-        <NumButton
-          num="1"
-          type="danger"
-          onClick={this.handleButtonClick}/>
+        <div class='row'>
+          <ButtonColumn
+            increment={1}
+            type="danger"
+            length={6}
+            onClick={this.handleClick}
+          />
+          <ButtonColumn
+            increment={2}
+            type='success'
+            length={6}
+            onClick={this.handleClick}
+          />
+        </div>
+        <div>
+          <p>You've clicked {this.state.lastNum}</p>
+        </div>
       </div>
     );
   }
