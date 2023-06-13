@@ -18,9 +18,11 @@ class ButtonColumn extends Component{
       )
     }
     return(
-      <div class='col'>
-        {buttons}
-      </div>
+      <>
+        <div class='col'>
+          {buttons}
+        </div>
+      </>
     )
   }
 }

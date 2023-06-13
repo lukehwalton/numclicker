@@ -1,7 +1,6 @@
 import {Component} from 'react';
 
 class NumButton extends Component{
-  
   handleClick = () => this.props.onClick(this.props.num);
 
   render(){
@@ -13,7 +12,14 @@ class NumButton extends Component{
       padding: '10px'
     }
     return(
-      <button style={buttonStyle} onClick={this.handleClick} class={`btn btn-outline-${type}`}>{num}</button>
+      <>
+        <button
+          style={buttonStyle}
+          onClick={this.handleClick}
+          class={`btn btn-outline-${type}`}>
+          {num}
+        </button>
+      </>
     );
   }
 }

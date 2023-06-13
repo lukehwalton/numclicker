@@ -1,11 +1,12 @@
 import './App.css';
 import ButtonColumn from './ButtonColumn';
+import Display from './Display';
 import {Component} from 'react';
 
 class App extends Component{
   constructor(props){
     super(props);
-    this.state = {lastNum: null};
+    this.state = {lastNum: 'nothing'};
   }
 
   handleClick = (num) => this.setState({lastNum: num});
@@ -27,9 +28,9 @@ class App extends Component{
             onClick={this.handleClick}
           />
         </div>
-        <div>
-          <p>You've clicked {this.state.lastNum}</p>
-        </div>
+        <hr />
+        <Display 
+        lastNum={this.state.lastNum}/>
       </div>
     );
   }
